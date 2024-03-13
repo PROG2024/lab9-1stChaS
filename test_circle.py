@@ -9,6 +9,7 @@ Write unit tests as described in README.md.
 """
 import unittest
 from circle import Circle
+import math
 
 
 # Circle.add_area
@@ -16,26 +17,31 @@ class Test_Area(unittest.TestCase):
     """Testcase for add.area"""
 
     # question 1
-    def test_radius_positive(self, other):
-        self.circle = Circle
-        if Circle.add_area() > 0 and other.radius > 0:
-            self.assertTrue(self.circle)
-            self.assertTrue(other.radius)
-        raise ValueError("The radius should always be positive number.")
+    def test_radius_positive(self):
+        """Test `add_area` with two circles having positive radius values."""
+        self.circle_1 = Circle(3)
+        self.circle_2 = Circle(4)
+        # the Euclidean norm
+        total_area = self.circle_2.add_area(self.circle_1)
+        self.assertEqual(total_area.get_radius(), 5)
+        area = math.pi*(5**2)  # manual way
+        self.assertEqual(total_area.get_area(), area)
 
     # question 2
-    def test_one_zero(self, other):
-        if self.assertEqual(0, self.circle):
-            self.assertNotEqual(0, self.circle)
-        elif self.assertEqual(0, other.circle):
-            self.assertNotEqual(0, other.circle)
+    def test_one_zero(self):
+        """Test `add_area` when one of the circles has radius 0,
+        the other has non-zero radius."""
+        self.circle_1 = Circle(16)
+        self.circle_2 = Circle(0)  # radius 0 circle
+        # check the radius of circle_2 == 0
+        self.assertEqual(self.circle_2.get_radius(), 0)
+        # the Euclidean norm
+        total_area = self.circle_2.add_area(self.circle_1)
+        area = math.pi * (16 ** 2)  # manual way
+        self.assertEqual(total_area.get_area(), area)
 
     # question 3
-    def raise_negative(self):
+    def test_raise_negative(self):
+        """Circle constructor raises exception if the radius is negative."""
         with self.assertRaises(ValueError):
-            self.circle.Circle()
-
-        # # pytest
-        # with pytest.raises(ValueError):
-        #     self.radius.Circle()
-
+            self.circle = Circle(-5)
