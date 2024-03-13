@@ -12,8 +12,11 @@ from counter import Counter
 
 
 class TestCounter(unittest.TestCase):
+    """Testcase from Readme"""
     def test_counter(self):
-        """Testcase from Readme"""
+        """check that the counter won't return to zero,
+        they are share the same count and can increase"""
+
         counter_1 = Counter()
         self.assertEqual(counter_1.count, 1)
         self.assertEqual(counter_1.count, 1)  # invoking count doesn't change anything

@@ -9,6 +9,7 @@
 
 
 class Counter:
+    """Counter in Singleton pattern."""
     _instance = None
 
     def __new__(cls):
@@ -19,9 +20,13 @@ class Counter:
 
     @property
     def count(self):
+        """a property: readonly
+        :return count"""
         return self.__count
 
     def increment(self):
+        """add 1 to current count
+        :return count + 1"""
         self.__count += 1
         return self.__count
 
