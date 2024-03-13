@@ -8,8 +8,8 @@ Write unit tests as described in README.md.
 
 """
 import unittest
-from circle import Circle
 import math
+from circle import Circle
 
 
 # Circle.add_area
